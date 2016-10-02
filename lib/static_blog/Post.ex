@@ -17,7 +17,7 @@ defmodule StaticBlog.Post do
   	end
 
 	defp split(data) do
-		[frontmatter, markdown] = String.split(data, "\n---\r\n", parts: 2) #TODO: figure out the regex to do this.
+		[frontmatter, markdown] = String.split(data, "\n---\n", parts: 2) #TODO: figure out the regex to do this.
 		{parse_yaml(frontmatter), Earmark.to_html(markdown)}
 	end
 
