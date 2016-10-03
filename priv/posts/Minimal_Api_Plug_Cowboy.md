@@ -26,7 +26,7 @@ Note: --sup initializes a basic supervisor tree. I will go over what this does a
 
 You should see output similar to this.
 
-![mix new](/images/Minimal_Api_Cowboy_Plug/1_mix_new.PNG)
+![mix new](/images/Minimal_Api_Cowboy_Plug/1_mix_new.png)
 
 Mix creates the project with a skeleton structure and a working test! 
 
