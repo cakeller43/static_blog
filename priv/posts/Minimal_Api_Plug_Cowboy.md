@@ -26,11 +26,11 @@ Note: --sup initializes a basic supervisor tree. I will go over what this does a
 
 You should see output similar to this.
 
-![mix new](/images/Minimal_Api_Cowboy_Plug/1_mix_new.png)
+![mix new](/images/Minimal_Api_Cowboy_Plug/1_mix_new.PNG)
 
 Mix creates the project with a skeleton structure and a working test! 
 
-![mix test](/images/Minimal_Api_Cowboy_Plug/2_mix_test.png)
+![mix test](/images/Minimal_Api_Cowboy_Plug/2_mix_test.PNG)
 ```
 min_api  
 |   .gitignore
@@ -78,7 +78,7 @@ Cowboy is a web server written in Erlang which provides routing and dispatching 
 
 Go ahead and open up `mix.exs`. Let's add the two packages to the `deps` list at the bottom of the file.
 
-![add deps](/images/Minimal_Api_Cowboy_Plug/3_deps.png)
+![add deps](/images/Minimal_Api_Cowboy_Plug/3_deps.PNG)
 
 After you add these go back to your console and pull the packages down using mix.
 
@@ -86,12 +86,12 @@ After you add these go back to your console and pull the packages down using mix
 mix deps.get
 ```
 
-![deps get](/images/Minimal_Api_Cowboy_Plug/4_deps_get.png)
+![deps get](/images/Minimal_Api_Cowboy_Plug/4_deps_get.PNG)
 
 Also in `mix.exs` we need to specify which other applications are dependencies and should be started when we start the Api.
  We need to add Cowboy and Plug to this list.  
 
-![deps get](/images/Minimal_Api_Cowboy_Plug/5_deps_apps.png)  
+![deps get](/images/Minimal_Api_Cowboy_Plug/5_deps_apps.PNG)  
 
 ## Creating the router
 
@@ -102,7 +102,7 @@ Now that we have our dependencies we can start writing our router.
   * Setup the prebuilt Plug Router
   * Define a route
 
-![router](/images/Minimal_Api_Cowboy_Plug/6_router.png)
+![router](/images/Minimal_Api_Cowboy_Plug/6_router.PNG)
 
   We setup the Plug.Router by adding a `use` and defining the plugs `:match` and `:dispatch`. 
   `:match` uses pattern matching to find a defined route based on an incoming request, then forwards the request to `:dispatch` who sends it to the matched route.
@@ -122,7 +122,7 @@ Here is where the `--sup` option becomes important. We need to tell supervisor h
  You can read more about supervisors, supervision trees, and OTP [here](http://elixir-lang.org/getting-started/mix-otp/supervisor-and-application.html).
 Go ahead and open up `min_api.ex`. In here you will see some generated code regarding supervision. We want to add our new router as a worker in the children list.
 
-![router](/images/Minimal_Api_Cowboy_Plug/7_sup.png)
+![router](/images/Minimal_Api_Cowboy_Plug/7_sup.PNG)
 
 The plug function `child_spec` returns a worker to be supervised. `child_spec` accepts a scheme, a plug, and options as parameters.
 
@@ -139,30 +139,30 @@ It runs compiles and runs your project in an iex instance.
 iex -S mix
 ```
 
-![router](/images/Minimal_Api_Cowboy_Plug/8_iex.png)
+![router](/images/Minimal_Api_Cowboy_Plug/8_iex.PNG)
 
 Once you see this it is time to send an http request. You can use something like `cURL` or [Postman](https://www.getpostman.com/)
 Cowboy runs on port 4000 by default. Send a `GET` request to `http://localhost:4000/` and you should receive a response!
 
-![router](/images/Minimal_Api_Cowboy_Plug/9_request.png)
+![router](/images/Minimal_Api_Cowboy_Plug/9_request.PNG)
 
 However, what happens if we send a request to a different route?
 
-![router](/images/Minimal_Api_Cowboy_Plug/10_500.png)
+![router](/images/Minimal_Api_Cowboy_Plug/10_500.PNG)
 
 We get an internal server error, not good.
  Furthermore, if you look at your console you will see that an exception was raised.
 
-![router](/images/Minimal_Api_Cowboy_Plug/11_error.png)
+![router](/images/Minimal_Api_Cowboy_Plug/11_error.PNG)
 
 This is one of the reasons that Plug suggests that you define a catch-all route in your routers. 
 Go ahead and add this below your other defined route.
 
-![router](/images/Minimal_Api_Cowboy_Plug/12_catchall.png)
+![router](/images/Minimal_Api_Cowboy_Plug/12_catchall.PNG)
 
 If you try the request again you should get a much better result (remember to restart your server).
 
-![router](/images/Minimal_Api_Cowboy_Plug/13_404.png)
+![router](/images/Minimal_Api_Cowboy_Plug/13_404.PNG)
 
 ## Conclusion
 
