@@ -166,4 +166,4 @@ If you try the request again you should get a much better result (remember to re
 
 ## Conclusion
 
-And there you have it! A simple web server that returns `200` or `404` from a web request. Perhaps not the most useful piece of software, but at least we learned something! I put the source code for the project [here](https://github.com/cakeller43/min_api). Thanks for reading!
+And there you have it! A simple web server that returns `200` or `404` from a web request. Perhaps not the most useful piece of software, but at least we learned something! I put the source code for the project [here](https://github.com/cakeller43/min_api).
