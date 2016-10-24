@@ -20,9 +20,7 @@ for creating, building, and testing your project. Open a command prompt or termi
 mix new min_api --sup
 ```
 
-```
-Note: --sup initializes a basic supervisor tree. I will go over what this does and why we need it later.
-```
+*Note:* --sup initializes a basic supervisor tree. I will go over what this does and why we need it later.
 
 You should see output similar to this.
 
@@ -104,8 +102,8 @@ Now that we have our dependencies we can start writing our router.
 
 ![router](/images/Minimal_Api_Cowboy_Plug/6_router.PNG)
 
-  We setup the Plug.Router by adding a `use` and defining the plugs `:match` and `:dispatch`. 
-  `:match` uses pattern matching to find a defined route based on an incoming request, then forwards the request to `:dispatch` who sends it to the matched route.
+  We setup the Plug.Router by including the router via the `use` ketword and defining the plugs `:match` and `:dispatch`. 
+  The `:match` plug uses pattern matching to find a defined route based on an incoming request, then forwards the request to `:dispatch` who sends it to the matched route.
   After we setup the Plug.Router we can use Plug's macros for defining routes. We can define a "home" router with "/".
     
   ```
@@ -117,7 +115,7 @@ We have not specified how or when our router should be started.
 
 ## Starting the router
 
-Here is where the `--sup` option becomes important. We need to tell supervisor how to start our router.
+Here is where the `--sup` option becomes important. We need to tell the supervisor how to start our router.
  A Supervisor is a process that watches child processes and knows how to rescue them if they crash. 
  You can read more about supervisors, supervision trees, and OTP [here](http://elixir-lang.org/getting-started/mix-otp/supervisor-and-application.html).
 Go ahead and open up `min_api.ex`. In here you will see some generated code regarding supervision. We want to add our new router as a worker in the children list.
@@ -133,7 +131,7 @@ child_spec(scheme, plug, opts, options \\ [])
 ## Run it!
 
 Now that we have started our router, it is time to try it out! Go back to your console and run the following command. 
-It runs compiles and runs your project in an iex instance.
+It runs compiles and runs your project in an iex(the Elixir REPL) instance.
 
 ```
 iex -S mix
@@ -141,7 +139,7 @@ iex -S mix
 
 ![router](/images/Minimal_Api_Cowboy_Plug/8_iex.PNG)
 
-Once you see this it is time to send an http request. You can use something like `cURL` or [Postman](https://www.getpostman.com/)
+Once you see this it is time to send an http request. You can use something like `cURL` or [Postman](https://www.getpostman.com/).
 Cowboy runs on port 4000 by default. Send a `GET` request to `http://localhost:4000/` and you should receive a response!
 
 ![router](/images/Minimal_Api_Cowboy_Plug/9_request.PNG)
@@ -166,4 +164,4 @@ If you try the request again you should get a much better result (remember to re
 
 ## Conclusion
 
-And there you have it! A simple web server that returns `200` or `404` from a web request. Perhaps not the most useful piece of software, but at least we learned something! I put the source code for the project [here](https://github.com/cakeller43/min_api).
+And there you have it! A simple web server that returns `200` or `404` from a web request. Perhaps not the most useful piece of software, but at least we learned a thing or two. I put the source code for the project [here](https://github.com/cakeller43/min_api).
