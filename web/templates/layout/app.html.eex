@@ -8,28 +8,56 @@
     <meta name="author" content="">
 
     <title>Home</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bootstrap.min.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <!--<ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
+  <body class="blog-background">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">The Kellers Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="<%= page_path(@conn, :index) %>">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">About</a></li>
+                  </ul>                  
+                </div><!-- /.navbar-collapse -->
+            </div>
         </nav>
-        <span class="logo"></span> -->
-      </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8 blog-content" style="margin-bottom: 2.0em ">
+            <span> This is the description</span>
+        </div>
+      </div>
+    </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="blog-content col-md-offset-2 col-md-8">
+                <header class="header">
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+                </header>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+                <p class="alert alert-info hidden" role="alert"><%= get_flash(@conn, :info) %></p>
+                <p class="alert alert-danger hidden" role="alert"><%= get_flash(@conn, :error) %></p>
 
-    </div> <!-- /container -->
+                <main role="main" class="content-body">
+                  <%= render @view_module, @view_template, assigns %>
+                </main>
+          </div> 
+        </div>     
+      </div>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/bootstrap.min.js") %>"></script>
   </body>
 </html>

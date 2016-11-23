@@ -1,5 +1,5 @@
 defmodule StaticBlog.Post do
-	defstruct slug: "", title: "", date: "", intro: "", content: ""
+	defstruct slug: "", title: "", date: "", intro: "", content: "", img: ""
 
 	def compile(file) do
 		post = %StaticBlog.Post{
@@ -17,7 +17,7 @@ defmodule StaticBlog.Post do
   	end
 
 	defp split(data) do
-		[frontmatter, markdown] = String.split(data, "\n---\n", parts: 2) #TODO: figure out the regex to do this.
+		[frontmatter, markdown] = String.split(data, "\n---", parts: 2) #TODO: figure out the regex to do this.
 		{parse_yaml(frontmatter), Earmark.to_html(markdown)}
 	end
 
@@ -31,7 +31,8 @@ defmodule StaticBlog.Post do
 	      title: get_prop(props, "title"),
 	      date: Timex.parse!(get_prop(props, "date"), "{ISOdate}"),
 	      intro: get_prop(props, "intro"),
-	      content: content}
+	      content: content,
+		  img: get_prop(props,"img")}
   	end
 
   	defp get_prop(props, key) do

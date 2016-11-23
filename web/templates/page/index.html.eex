@@ -1,8 +1,15 @@
 <%= for post <- @posts do %>
   <article class="row">
+  <div class="col-md-10">
     <h2><%= post.title %></h2>
     <p><%= Timex.format!(post.date, "{Mshort} {D} {YYYY}") %></p>
     <p><%= post.intro %></p>
-    <p><a href="<%= post_path(@conn, :show, post.slug) %>">Read post</a></a>
+    <a class="btn btn-sm btn-primary" href="<%= post_path(@conn, :show, post.slug) %>">Read post</a>
+  </div>
+  <div class="col-md-2">
+    <img src="<%= static_path(@conn, post.img )%>" alt="test">
+  </div>  
   </article>
+    <hr/>
+  
 <% end %>
