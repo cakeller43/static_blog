@@ -3,7 +3,7 @@
 title: Minimal Api with Elixir, Cowboy and Plug 
 date: 2016-09-26
 intro: How to make a simple api that responds to requests with only cowboy and plug as dependencies. 
-img: /images/Freesample.svg
+img: /images/elixir-icon.png
 
 ---
 I started working with the [Phoenix](http://www.phoenixframework.org/) framework recently, and I have really enjoyed it. 

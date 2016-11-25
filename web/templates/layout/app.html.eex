@@ -32,19 +32,9 @@
                 </div><!-- /.navbar-collapse -->
             </div>
         </nav>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-8 blog-content" style="margin-bottom: 2.0em ">
-            <span> This is the description</span>
-        </div>
-      </div>
-    </div>
       <div class="container-fluid">
         <div class="row">
           <div class="blog-content col-md-offset-2 col-md-8">
-                <header class="header">
-
-                </header>
 
                 <p class="alert alert-info hidden" role="alert"><%= get_flash(@conn, :info) %></p>
                 <p class="alert alert-danger hidden" role="alert"><%= get_flash(@conn, :error) %></p>
