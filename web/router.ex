@@ -17,6 +17,8 @@ defmodule StaticBlog.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/about", PageController, :about
+    get "/archives", PageController, :archives
     get "/:slug",  PostController, :show
   end
 

@@ -1,5 +1,5 @@
 defmodule StaticBlog.Post do
-	defstruct slug: "", title: "", date: "", intro: "", content: "", img: ""
+	defstruct slug: "", title: "", date: "", intro: "", content: "", img: "", author: ""
 
 	def compile(file) do
 		post = %StaticBlog.Post{
@@ -32,7 +32,8 @@ defmodule StaticBlog.Post do
 	      date: Timex.parse!(get_prop(props, "date"), "{ISOdate}"),
 	      intro: get_prop(props, "intro"),
 	      content: content,
-		  img: get_prop(props,"img")}
+		  img: get_prop(props,"img"),
+		  author: get_prop(props,"author")}
   	end
 
   	defp get_prop(props, key) do
