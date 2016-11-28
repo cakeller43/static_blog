@@ -1,10 +1,10 @@
+<h1>Archives</h1><hr/>
 <%= for post <- @posts do %> 
-
-<!--<div class="row">
-  <div class="col-md-12 col-xs-12">
-    <h4><%= Timex.format!(post.date, "{Mshort} {YYYY}") %></h4>
-  </div>
-</div>-->
+    <div class="row">
+    <div class="col-md-12 col-xs-12">
+        <h4><%= Timex.format!(post.date, "{Mshort} {YYYY}") %></h4>
+    </div>
+    </div>
      <ul style="list-style: none">
         <li>
             <a class="btn btn-link" href="<%= post_path(@conn, :show, post.slug) %>"><%= post.title %></a>
