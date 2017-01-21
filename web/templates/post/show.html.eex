@@ -1,4 +1,4 @@
-<div>
+<div class="post-body">
   <h1><%= @post.title %></h1>
   <h4><%= @post.author %></h4>  
   <p><%= Timex.format!(@post.date, "{Mshort} {D} {YYYY}") %></p>
