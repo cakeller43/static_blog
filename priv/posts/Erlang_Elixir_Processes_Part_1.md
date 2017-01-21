@@ -1,7 +1,7 @@
 ---
 
 title: Erlang/Elixir Concurrency - Processes
-date: 2016-01-21
+date: 2017-01-21
 intro: Overview of Elixir processes and how they enable parallelization and concurrency.
 img: /images/elixir-icon.png
 author: Corey Keller
