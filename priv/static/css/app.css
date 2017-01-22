@@ -20,8 +20,9 @@
     max-width: 75px;
     max-height: auto;
 }
-
-.post-body > img
+/*
+.post-body p > img
 {
-     align: center;
-}
+    display: block;
+    margin: 0 auto;
+}*/
