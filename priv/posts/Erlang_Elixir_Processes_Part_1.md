@@ -9,7 +9,7 @@ author: Corey Keller
 ---
 ## The Big Picture
 
-Processes are the basic building blocks of parallelization and concurrency on the Erlang VM. Simply put, a process is code that is running in isolation. 
+Processes are the basic building blocks of parallelization and concurrency on the Erlang VM(BEAM). Simply put, a process is code that is running in isolation. 
 An important distinction that must be made is that a Elixir process is not related to OS processes. Elixir processes are much smaller, sometimes as small as a few kilobytes,
 and can be created/destroyed with minimal overhead. It is not uncommon to have thousands of processes running simultaneously. 
 The following diagram shows the relation between the OS, VM, and processes.  
