@@ -10,7 +10,13 @@
         <img src="<%= static_path(@conn, "/images/CoreyWebsite.jpg" )%>" alt="CoreyKeller" class="img-circle img-responsive">
     </div>
     <div class="col-md-10 col-sm-10">
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <p>My name is Corey Keller and I am a software engineer at Clear-Measure, a consulting company based in Austin Texas. 
+        I primarily work on .NET web applications while learning Elixir and Erlang on my spare time.
+        </p>
+        <p>Github: <a href="https://github.com/cakeller43">cakeller43</a></p>
+        <p>Twitter: <a href="https://twitter.com/TheKellerFeller">@TheKellerFeller</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/corey-keller-512454b6/">Corey Keller</a></p>
+        <p>Email: cakeller43@gmail.com</p>
     </div>
 </div>
 
