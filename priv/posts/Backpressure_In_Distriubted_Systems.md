@@ -1,30 +1,27 @@
 ---
 
-title: Backpressure in Distributed Systems
+title: Backpressure in Message Based Systems
 date: 2017-03-27
 intro: When to use synchronous calls in your system.
 img: /images/elixir-icon.png
 author: Corey Keller
 
 ---
+# Backpressure in Message Based Systems
 
 ## The Problem
 
-Asynchronous messaging in a distributed system is great! It allows for clients to move on with their lives without waiting on a response from the service. It can also enable sending messages when the service is unavailible.
-However, async messaging has it's downsides as well. Unpredictable traffic or heavy load could cause this service to become overwhelmed and start providing unacceptable processing times.
+Asynchronous messaging in a distributed system is great! It allows for clients to move on with their lives without waiting on a response from the service. It can also enable sending messages when the service is unavailible. However, async messaging has it's downsides as well. Unpredictable traffic or heavy load could cause this service to become overwhelmed and start providing unacceptable processing times.
 
 Let's assume in the following diagram that there are 4 clients and each client sends 2 messages per second to `FooService`. While FooService can process up to 4 messages per second.
 
 ![overflow](/images/cm-blog/diag_1.png)
 
-Clearly this will become a problem if the traffic continues at this rate. Processing times on newly sent messages will grow quickly while the queue will consume more and more memory.
-There are a few solutions to this problem, one of which being to add an additional `FooService` to read from the queue, or you could utilize synchronicity.
+Clearly this will become a problem if the traffic continues at this rate. Processing times on newly sent messages will grow quickly while the queue will consume more and more memory. There are a few solutions to this problem, one of which being to add an additional `FooService` to read from the queue, or you could utilize synchronicity.
 
 ## Synchronous Backpressure
 
-Replacing the call with a synchronous one enables `FooService` to put pressure back on the clients in order to regulate it's traffic. Each client will be blocked while waiting for their
-message to be processed, preventing them from sending any other messages. Sounds bad right? However, this means that the work queue can not have any more messages in it than the number of clients utilizing the service.
-In this case, 4.
+Replacing the call with a synchronous one enables `FooService` to put pressure back on the clients in order to regulate it's traffic. Each client will be blocked while waiting for their message to be processed, preventing them from sending any other messages. Sounds bad right? However, this means that the work queue can not have any more messages in it than the number of clients utilizing the service. In this case, 4.
 
 ![backpressure](/images/cm-blog/diag_2.png)
 
@@ -38,15 +35,12 @@ Keep synchronous processing in mind if you can afford to push the time back to y
 
 ## Load Shedding
 
-Synchronicity is not the only way to handle out of control queues. Perhaps an even simpler solution is to have a limit on your queues and drop messages that are added over the limit.
-Obviously you must be ok with losing a certain percentage of messages during high load, but this will allow clients to keep the "fire and forget" mentaility and protect your service from
+Synchronicity is not the only way to handle out of control queues. Perhaps an even simpler solution is to have a limit on your queues and drop messages that are added over the limit. Obviously you must be ok with losing a certain percentage of messages during high load, but this will allow clients to keep the "fire and forget" mentaility and protect your service from
 being overwhelmed.
 
 ![load shedding](/images/cm-blog/diag_3.png)
 
 The message loss can be mitigated by storing the dropped messages elsewhere or retrying with an exponential backoff strategy. Load shedding is a great way to maintain responsiveness on clients and control load as long as some message loss is acceptable.
-
-// Discuss pull based services with buffers
 
 ## Pull Based Services
 
@@ -61,4 +55,8 @@ while the work queue for FooService stays at an acceptable level. A simple way t
 
 Clients send messages from their outbound queue to `FooService`.
 
-The main benefit of this strategy is to spread the responsibility of storage across the system. 
+The main benefit of this strategy is to spread the responsibility of storage across the system while limiting load. 
+
+## Wrap Up
+
+Hopefully now you have an idea of strategies to consider when dealing with bursts of traffic in your system. These are not the only ways to solve the "overflowing queue" problem but they can help mitigate crashes without having to add additional services or hardware.
