@@ -11,7 +11,7 @@ author: Corey Keller
 
 ## The Problem
 
-Asynchronous messaging in a distributed system is great! It allows for clients to move on with their lives without waiting on a response from the service. It can also enable sending messages when the service is unavailible. However, async messaging has it's downsides as well. Unpredictable traffic or heavy load could cause this service to become overwhelmed and start providing unacceptable processing times.
+Asynchronous messaging in a distributed system is great! It allows for clients to move on with their lives without waiting on a response from the service. It can also enable sending messages when the service is unavailable. However, async messaging has it's downsides as well. Unpredictable traffic or heavy load could cause this service to become overwhelmed and start providing unacceptable processing times.
 
 Let's assume in the following diagram that there are 4 clients and each client sends 2 messages per second to `FooService`. While FooService can process up to 4 messages per second.
 
